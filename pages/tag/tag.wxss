@@ -1,0 +1,46 @@
+
+label{
+  display: inline-block;
+  height: 78rpx;
+  border: 2rpx solid #f0f0f0;
+  color: #000;
+  cursor: pointer;
+  line-height: 30rpx;
+  background-color: #f0f0f0;
+  border-radius: 5000rpx;
+  margin: 10rpx;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  text-align: center;
+  text-decoration: none;
+  overflow: visible;
+  margin-left: initial;
+  transform: translate(0rpx, 0rpx);
+  margin-right: initial;
+}
+.check {
+  display: inline-block;
+  text-align: center;
+  border-radius: 5000rpx;
+  margin: 10rpx;
+}
+.check label {
+  font-size: 34rpx;
+  line-height: 79rpx;
+  border-radius: 5000rpx;
+  margin: 25rpx 0 25rpx 10rpx;
+}
+.is_checked {
+   background-color: #2dc799;
+   color: #fff;
+   border: 2rpx solid #fff;
+   border-radius: 5000rpx;
+   margin: 10rpx;
+}
+.is_checked>checkbox {
+  color: red;
+}

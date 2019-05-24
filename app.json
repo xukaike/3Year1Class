@@ -1,0 +1,45 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/searchlist/searchlist",
+    "pages/article/article",
+    "pages/hot/hot",
+    "pages/search/search",
+    "pages/center/center",
+    "pages/subscription/subscription",
+    "pages/tag/tag",
+    "pages/history/history",
+    "pages/collect/collect"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1CBBB4",
+    "navigationBarTitleText": "三零一班",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/tabbar1.png",
+        "selectedIconPath": "/images/tabbar1s.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/hot/hot",
+        "iconPath": "/images/tabbar2.png",
+        "selectedIconPath": "/images/tabbar2s.png",
+        "text": "热点"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "iconPath": "/images/tabbar3.png",
+        "selectedIconPath": "/images/tabbar3s.png",
+        "text": "我"
+      }
+    ]
+  }
+}

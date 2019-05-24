@@ -1,0 +1,108 @@
+
+
+<view class="cu-bar search bg-cyan">
+    <view class='search-form round'>
+      <text class="icon-search"></text>
+      <input type="text" placeholder="搜索标签" confirm-type="search"></input>
+    </view>
+    <view class='action'>
+      <button class='cu-btn bg-green shadow-blur round'>搜索</button>
+    </view>
+</view>
+
+<view class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 175rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{20}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      标签{{index +1}}
+    </view>
+  </scroll-view>
+
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 175rpx)" scroll-into-view="main-id-{{TabCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" wx:for="{{20}}" wx:key id="main-id-{{index}}">
+      <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='icon-title text-green'></text> 标签{{index +1}}</view>
+        </view>
+
+        <view class="cu-list menu menu-avatar">
+        
+          <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" bindtouchstart='ListTouchStart' bindtouchmove='ListTouchMove' bindtouchend='ListTouchEnd' data-target="move-box-{{index}}">
+            <view class="cu-avatar round lg" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);"></view>
+            <navigator  url='/pages/subscription/subscription'>
+            <view class='content'>
+              <view class='text-grey'>东七门
+                <view class="cu-tag round orange sm">公众号</view>
+              </view>
+              <view class='text-gray text-sm text-cut' style='width:180px'>
+                年轻人独特的观点聚集地
+              </view>
+            </view>
+            </navigator>
+            
+            <view class='move'>
+              <view class='bg-grey'>置顶</view>
+              <view class="bg-red">删除</view>
+            </view>
+
+          </view>
+
+          <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);">
+            </view>
+            <navigator  url='/pages/subscription/subscription'>
+            <view class='content'>
+              <view class='text-grey'>物道
+                <view class="cu-tag round orange sm">公众号</view>
+              </view>
+              <view class='text-gray text-sm text-cut' style='width:180px'>
+                每天早上8点，用文字述说美好生活方式。
+              </view>
+            </view>
+            </navigator>
+            <view class='move'>
+              <view class='bg-grey'>置顶</view>
+              <view class="bg-red">删除</view>
+            </view>
+          </view>
+
+        <view class="cu-item">
+          <view class="cu-avatar radius lg" style="background-image:url(https://image.weilanwl.com/img/4x3-3.jpg);"></view>
+          <navigator  url='/pages/article/article'>
+          <view class='content'>
+            <view class='text-cut' style='width:180px'>这里有个戏精铲屎官，主子了解一下？</view>
+            <view class='text-gray text-sm text-cut' style='width:180px'>
+              这是一个伪铲屎官为了给自己的程序凑字数瞎几把乱写的一堆文字，了解一下就OK！
+            </view>
+          </view>
+          <view class='move'>
+            <view class='bg-grey'>置顶</view>
+            <view class="bg-red">删除</view>
+          </view>
+          </navigator>
+        </view>
+
+        <view class="cu-item">
+          <view class="cu-avatar radius lg" style="background-image:url(https://image.weilanwl.com/img/square-3.jpg);"></view>
+          <navigator  url='/pages/article/article'>
+          <view class='content'>
+            <view class='text-cut' style='width:180px'>喵星人互动</view>
+            <view class='text-gray text-sm text-cut' style='width:180px'>
+              喵星酱：喵喵喵！
+            </view>
+          </view>
+          <view class='move'>
+            <view class='bg-grey'>置顶</view>
+            <view class="bg-red">删除</view>
+          </view>
+          </navigator>
+        </view>
+        
+
+
+      </view>
+
+
+      
+    </view>
+  </scroll-view>
+</view>

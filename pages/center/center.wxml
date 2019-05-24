@@ -1,0 +1,61 @@
+<view class="margin-xl padding-xl bg-white radius shadow-lg">
+  <view class="flex justify-center">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
+    <block wx:else>
+      <view class='text-center'>
+        <view class="cu-avatar xl round solids" style="background-image:url({{userInfo.avatarUrl}})"></view>
+        <view class="padding">{{userInfo.nickName}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="bg-white">
+<view class='padding flex text-center text-grey bg-white shadow-warp' bindtap='totag'>
+  <view class='flex flex-sub flex-direction solid-right'>
+    <image src='/images/sign.png' class='icon' mode="aspectFit"></image>
+    <view class="margin-top-sm">
+      标签</view>
+  </view>
+  <view class='flex flex-sub flex-direction solid-right' bindtap='tohistory'>
+    <image src='/images/histroy.png' class='icon' mode="aspectFit"></image>
+    <view class="margin-top-sm">
+      历史</view>
+  </view>
+  <view class='flex flex-sub flex-direction solid-right' bindtap='tocollect'>
+    <image src='/images/like.png' class='icon' mode="aspectFit"></image>
+    <view class="margin-top-sm">
+      收藏</view>
+  </view>
+</view>
+
+  <view class="cu-bar bg-white">
+    <view class='action sub-title'>
+      <text class='text-xl text-bold text-BLACK'>标签</text>
+      <text class='text-ABC text-BLACK'>SIGN</text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+
+
+<view class="cotianer1 padding flex flex-wrap justify-between align-center ">
+  <button class='cu-btn round shadow bg-blue animation-scale-up ' style='animation-delay: 0.6s;'>标签1</button>
+  <view class="padding-top:50%">
+  <button class='cu-btn round shadow lg bg-pink animation-scale-up '  style='animation-delay: 1s;'>标签1</button>
+  </view>
+</view>
+<view class="cotianer2 padding flex flex-wrap justify-between align-center ">
+  <button class='cu-btn round shadow bg-black animation-scale-up'data-class='scale-up' style='animation-delay: 1s;'>标签1</button>
+  <view class="padding-top:75%">
+  <button class='cu-btn round shadow sm bg-green animation-scale-up'data-class='scale-up' style='animation-delay: 0.5s;'>标签1</button>
+  </view>
+  <button class='cu-btn round shadow lg bg-brown animation-scale-up'data-class='scale-up' style='animation-delay: 0.7s;'>标签1</button>
+</view>
+<view class="cotianer3 padding flex flex-wrap justify-between align-center ">
+  <button class='cu-btn round shadow lg bg-yellow animation-scale-up' data-class='scale-up' style='animation-delay: 0.9s;'>标签1</button>
+  <button class='cu-btn round shadow sm bg-red animation-scale-up' data-class='scale-up' style='animation-delay: 0.8s;'>标签1</button>
+  <view class="padding-bottom:50%">
+  <button class='cu-btn round shadow bg-purple animation-scale-up'data-class='scale-up' style='animation-delay: 0.5s;'>标签1</button>
+  </view>
+</view>
+</view>

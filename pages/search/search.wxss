@@ -1,0 +1,7 @@
+/* pages/search/search.wxss */
+.cotianer1{
+    padding: 50rpx 100rpx 50rpx 100rpx
+}
+.cotianer2{
+    padding: 0rpx 100rpx 50rpx 100rpx
+}

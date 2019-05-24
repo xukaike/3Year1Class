@@ -1,0 +1,8 @@
+
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="view-title">{{item.title}}</view>
+<view class="view-time-box">
+  <text class="view-date">{{time}}</text>
+  <text class="view-time">{{item.account}}</text>
+</view>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>

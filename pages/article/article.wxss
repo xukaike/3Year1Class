@@ -1,0 +1,47 @@
+
+@import "../../wxParse/wxParse.wxss";
+page{
+  background: #fff;
+}
+.view-title{
+  line-height: 80rpx;
+  font-size: 48rpx;
+  color:#0C0C0C;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 190rpx;
+  min-height: 80rpx;
+  width:690rpx;
+  padding:30rpx 30rpx 0;
+}
+.view-time-box{
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 30rpx;
+  color:#999999;
+  margin-bottom: 40rpx;
+  padding:0 30rpx;
+}
+.view-date{
+  margin-right: 20rpx;
+}
+.wxParse-img{
+  margin-top:20rpx;
+  display: block;
+  position:relative;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+}
+.wxParse-p{
+  text-indent: 2em;
+  margin-top:20rpx;
+  color:#0C0C0C;
+  line-height:50rpx;
+  font-size:34rpx;
+  padding:0 30rpx 30rpx;
+  text-align: justify;
+}

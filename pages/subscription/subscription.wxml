@@ -1,0 +1,53 @@
+
+
+<view class='padding bg-white text-center'>
+  <view class="cu-avatar xl round" style="background-image:url(/images/touxiang.jpg);"></view>
+  <view class='text-xl padding'>
+    <text class='text-black text-bold'>日食记</text>
+  </view>
+  <view class='text-lg padding'>
+    <text class='text-black'>温暖治愈你的心和胃。</text>
+  </view>
+  <view class='text-gray padding'>
+    <text>499篇原创文章</text>
+    <text class='margin-left'>14位朋友关注</text>
+  </view>
+  <view class='padding flex'>
+    <view class='flex flex-sub flex-direction solid-right'>
+      <view class="margin-top-sm">进入公众号</view>
+    </view>
+    <view class='flex flex-sub flex-direction'>
+      <view class="margin-top-sm">不再关注</view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="bg-white margin-top">
+  <view class='padding flex text-center'>
+  <view class='flex flex-sub flex-direction solid-right'>
+    <view class="margin-top-sm">做做饭
+      <text class='icon-sort margin-left'></text>
+    </view>
+  </view>
+  <view class='flex flex-sub flex-direction solid-right'>
+    <view class="margin-top-sm">聊聊天
+      <text class='icon-sort margin-left'></text>
+    </view>
+  </view>
+  <view class='flex flex-sub flex-direction'>
+    <view class="margin-top-sm">小卖部
+      <text class='icon-sort margin-left'></text>
+    </view>
+  </view>
+</view>
+
+</view>
+
+
+<view class="cu-list menu margin-top margin-bottom-xl shadow-lg">
+  <view class="cu-item arrow">
+    <view class='content' bindtap="showText">全部消息</view>
+  </view>
+</view>

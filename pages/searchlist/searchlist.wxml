@@ -1,0 +1,26 @@
+<!--pages/searchlist/searchlist.wxml-->
+<view class="cu-bar search bg-white">
+    <view class='search-form round'>
+      <text class="icon-search"></text>
+      <input type="text" placeholder="{{searchvalue}}" confirm-type="search" ></input>
+    </view>
+    <view class='action'>
+      <button class='cu-btn bg-black shadow-blur round' bindtap='back'>取消</button>
+    </view>
+</view>
+
+<view class="cu-card article no-card "  wx:for="{{searchresult}}">
+  <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
+    <view class="title">{{item.title}}</view>
+    <view class="content">
+      <image src="https://img-blog.csdn.net/20180417183259115?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2l0X2NncQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" mode="aspectFill"></image>
+      <view class="desc">
+        <view class='text-content'> {{item.intro}}</view>
+        <view>
+          <view class='cu-tag bg-red light sm round'>{{item.account}}</view>
+          <view class='cu-tag bg-green light sm round'>{{item.type}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

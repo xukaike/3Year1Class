@@ -1,0 +1,78 @@
+<!--index.wxml-->
+
+  <view class="cu-bar search bg-white">
+    <view class='search-form round'>
+      <text class="icon-search"></text>
+      <input disabled="{{true}}" bindtap='search' type="text" placeholder="搜索文章" confirm-type="search"></input>
+    </view>
+  </view>
+
+
+<!-- 轮播图 -->
+<swiper class="card-swiper square-dot bg-white"  indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper"  indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{4}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view class='bg-img shadow-blur' style="background-image:url(https://image.weilanwl.com/img/4x3-{{index+1}}.jpg)"></view>
+  </swiper-item>
+</swiper>
+
+
+
+  <view class="cu-bar bg-white">
+    <view class='action sub-title'>
+      <text class='text-xl text-bold text-black'>热门推荐</text>
+      <text class='bg-black'></text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+<view class="cu-card case no-card" bindtap='toarticle'>
+  <view wx:for="{{1}}" wx:key class="cu-item shadow">
+    <view class='image'>
+      <image src="/images/swiper1.jpg" mode="widthFix"></image>
+      <view class="cu-tag bg-blue">福利</view>
+      <view class='cu-bar bg-shadeBottom'>我和制服不得不说的那些事！</view>
+    </view>
+    <view class="cu-list menu menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{userInfo.avatarUrl}});"></view>
+        <view class='content flex-sub'>
+          <view class='text-grey'>{{userInfo.nickName}}</view>
+          <view class='text-gray text-sm flex justify-between'>
+            十天前
+            <view class="text-gray text-sm">
+              <text class="icon-attentionfill"></text> 10
+              <text class="icon-appreciatefill"></text> 20
+              <text class="icon-messagefill"></text> 30
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+  
+
+  <view class="cu-bar bg-white">
+    <view class='action sub-title'>
+      <text class='text-xl text-bold text-black'>日荐</text>
+      <text class='bg-black'></text>
+      <!-- last-child选择器-->
+    </view>
+  </view>
+
+
+<view class="bg-white">
+  <view class='padding flex text-center text-black   bg-white shadow-warp' bindtap='tosubscription'>
+    <view class='flex flex-sub flex-direction  solid-right'>
+      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
+      <text class='text-xl text-bold margin-top-sm' >name</text>
+    </view>
+    <view class='flex flex-sub flex-direction solid-right' bindtap='tosubscription'>
+      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
+      <text class='text-xl text-bold margin-top-sm' >name</text>
+    </view>
+    <view class='flex flex-sub flex-direction solid-right' bindtap='tosubscription'>
+      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
+      <text class='text-xl text-bold margin-top-sm' >name</text>
+    </view>
+  </view>
+</view>
