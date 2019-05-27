@@ -2,7 +2,7 @@
 <view class="cu-bar search bg-white">
     <view class='search-form round'>
       <text class="icon-search"></text>
-      <input type="text" placeholder="{{searchvalue}}" confirm-type="search" ></input>
+      <input type="text" placeholder="{{searchvalue}}" confirm-type="search" bindinput='bindinput' bindconfirm='search'></input>
     </view>
     <view class='action'>
       <button class='cu-btn bg-black shadow-blur round' bindtap='back'>取消</button>
@@ -13,7 +13,7 @@
   <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
     <view class="title">{{item.title}}</view>
     <view class="content">
-      <image src="https://img-blog.csdn.net/20180417183259115?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2l0X2NncQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" mode="aspectFill"></image>
+      <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill"></image>
       <view class="desc">
         <view class='text-content'> {{item.intro}}</view>
         <view>
