@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/searchlist/searchlist",
     "pages/article/article",
@@ -11,7 +10,6 @@
     "pages/tag/tag",
     "pages/history/history",
     "pages/collect/collect"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,5 +39,6 @@
         "text": "我"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
