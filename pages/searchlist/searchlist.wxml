@@ -9,7 +9,7 @@
     </view>
 </view>
 
-<view class="cu-card article no-card "  wx:for="{{searchresult}}">
+<view class="cu-card article no-card "  wx:for="{{searchresult}}" wx:key="{{item}}">
   <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
     <view class="title">{{item.title}}</view>
     <view class="content">
