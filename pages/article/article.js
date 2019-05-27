@@ -1,4 +1,4 @@
-
+const app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 var utils = require('../../utils/util.js')
 Page({
@@ -9,8 +9,9 @@ Page({
   data: {
     time:'',
     article:'',
-    item:{}
-
+    item:{},
+    isCollect:false,
+    text:'收藏'
   },
   postdata:{
 
@@ -45,7 +46,7 @@ Page({
     console.log(that.data.item);
     console.log(utils.formatTime(that.data.item.timestramp, 'Y-M-D h:m:s'));
     wx.request({
-      url: 'http://120.79.177.232:9301/page_content',
+      url: 'https://sv.icewhite.cn:9301/page_content',
       data: { id: that.data.item.id },
       method: 'POST',
       header: {
@@ -58,9 +59,89 @@ Page({
         WxParse.wxParse('article', 'html', that.data.article, that, 0);
         wx.hideLoading();
       }
-    })
+    });
+    if(app.globalData.collections.indexOf(this.data.item.id)>-1){
+      this.setData({
+        isCollect:true,
+        text:'已收藏'
+      })
+    }
+    
 
 
     // 更改数据、获取新数据完成
+  },
+  star(){
+    console.log(this.data.isCollect)
+    if(this.data.isCollect == false){
+
+      wx.request({
+        url:'https://sv.icewhite.cn:9301/star_page',
+        data:{
+          userid:app.globalData.openId,
+          pageid:this.data.item.id
+        },
+        method:'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:res => {
+          if(res.statusCode == 200){
+            this.isCollect = true;
+            wx.showToast({
+              title:'收藏成功！'
+            })
+            this.setData({
+              isCollect:true,
+              text:'已收藏'
+            })
+            app.globalData.collections.push(this.data.item.id)
+          }
+          else{
+            wx.showToast({
+              title:res.data.message,
+              icon:'none'
+            })
+          }
+        }
+      })
+
+    }
+    else{
+      wx.request({
+        url:'https://sv.icewhite.cn:9301/cancel_star_page',
+        data:{
+          userid:app.globalData.openId,
+          pageid:this.data.item.id
+        },
+        method:'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:res => {
+          if(res.statusCode == 200){
+            this.isCollect = true;
+            wx.showToast({
+              title:'已取消'
+            });
+            this.setData({
+              isCollect:false,
+              text:'收藏'
+            });
+            for(var i = 0; i < app.globalData.collections.length ;i++){
+              if( app.globalData.collections[i] == this.data.item.id ){
+                app.globalData.collections.splice(i,1)
+              }
+            }
+          }
+          else{
+            wx.showToast({
+              title:res.data.message,
+              icon:'none'
+            })
+          }
+        }
+      })
+    }
   }
 })

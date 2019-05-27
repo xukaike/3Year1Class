@@ -1,8 +1,13 @@
 
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="view-title">{{item.title}}</view>
-<view class="view-time-box">
-  <text class="view-date">{{time}}</text>
-  <text class="view-time">{{item.account}}</text>
+<view class="cu-bar bg-white solid-bottom margin-top ">
+  <view class='action'>
+    <text class="view-date">{{time}}</text>
+    <text class="view-time">{{item.account}}</text>
+  </view>
+  <button class=" cu-btn bg-cyan  round  margin-right-sm {{ isCollect?'light':'' }}" bindtap='star'>
+    <text class='icon-favor'></text>{{text}}
+  </button>
 </view>
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
