@@ -11,7 +11,11 @@
 
 <view class="cu-card article no-card "  wx:for="{{searchresult}}" wx:key="{{item}}">
   <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
-    <view class="title">{{item.title}}</view>
+    <view class="title">
+      <view class="text-cut">
+        {{item.title}}
+      </view>
+    </view>
     <view class="content">
       <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill"></image>
       <view class="desc">
