@@ -4,7 +4,9 @@ Page({
     searchvalue:'',
     searchresult:[],
     searchitem:'',
-    fragment:0
+    fragment:0,
+    isNone:false,
+    isLoading:false
   },
   onLoad(option){
     var that = this;
@@ -35,8 +37,8 @@ Page({
     var that = this;
     this.data.fragment++;
     console.log('bottom','fragment='+this.data.fragment)
-    wx.showLoading({
-      title:'加载中'
+    this.setData({
+      isLoading:true
     })
     wx.request({
       url: 'https://sv.icewhite.cn:9301/page_key_search',
@@ -49,15 +51,23 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' 
       },
       success(res){
-        let list = that.data.searchresult;
-        for(var i=0;i<res.data.result.length;i++){
-          list.push(res.data.result[i])
+        if(res.statusCode == 400){
+          that.setData({
+            isNone:true
+          })
+          console.log(that.data.isLoading)
         }
-        that.setData({
-          searchresult:list
-        })
-        wx.hideLoading()
-        console.log(that.data.searchresult)
+        else{
+          let list = that.data.searchresult;
+          for(var i=0;i<res.data.result.length;i++){
+            list.push(res.data.result[i])
+          }
+          that.setData({
+            searchresult:list,
+            isLoading:false
+          })
+          console.log(that.data.searchresult)
+        }
       }
     })
   },

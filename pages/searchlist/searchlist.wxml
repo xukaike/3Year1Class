@@ -5,7 +5,7 @@
       <input type="text" placeholder="{{searchvalue}}" confirm-type="search" bindinput='bindinput' bindconfirm='search'></input>
     </view>
     <view class='action'>
-      <button class='cu-btn bg-black shadow-blur round' bindtap='back'>取消</button>
+      <button class='cu-btn bg-cyan shadow-blur round' bindtap='back'>取消</button>
     </view>
 </view>
 
@@ -28,3 +28,5 @@
     </view>
   </view>
 </view>
+
+<view wx:if="{{isLoading}}" class="cu-load bg-cyan {{!isNone?'loading':'over'}}"></view>
