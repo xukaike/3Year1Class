@@ -58,6 +58,17 @@ Page({
         });
         WxParse.wxParse('article', 'html', that.data.article, that, 0);
         wx.hideLoading();
+        wx.request({
+          url: 'https://sv.icewhite.cn:9301/add_history',
+          data: {
+            userid:app.globalData.openId,
+            pageid:that.data.item.id
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+        })
       }
     });
     if(app.globalData.collections.indexOf(this.data.item.id)>-1){
