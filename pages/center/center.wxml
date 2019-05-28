@@ -10,24 +10,17 @@
   </view>
 </view>
 
+  <view class="cu-list grid col-3 ">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key bindtap="to{{item.link}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+
+
 <view class="bg-white">
-<view class='padding flex text-center text-grey bg-white shadow-warp' bindtap='totag'>
-  <view class='flex flex-sub flex-direction solid-right'>
-    <image src='/images/sign.png' class='icon' mode="aspectFit"></image>
-    <view class="margin-top-sm">
-      标签</view>
-  </view>
-  <view class='flex flex-sub flex-direction solid-right' bindtap='tohistory'>
-    <image src='/images/histroy.png' class='icon' mode="aspectFit"></image>
-    <view class="margin-top-sm">
-      历史</view>
-  </view>
-  <view class='flex flex-sub flex-direction solid-right' bindtap='tocollect'>
-    <image src='/images/like.png' class='icon' mode="aspectFit"></image>
-    <view class="margin-top-sm">
-      收藏</view>
-  </view>
-</view>
 
   <view class="cu-bar bg-white">
     <view class='action sub-title'>

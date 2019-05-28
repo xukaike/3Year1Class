@@ -6,7 +6,28 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    iconList:[
+      {
+        icon:'likefill',
+        color:'red',
+        name:'收藏',
+        link:'collect'
+      },
+      {
+        icon:'tagfill',
+        color:'cyan',
+        name:'标签',
+        link:'tag'
+      },
+      {
+        icon:'timefill',
+        color:'mauve',
+        name:'历史',
+        link:'history'
+      }
+    ]
+    
   },
   //事件处理函数
   onLoad: function () {
