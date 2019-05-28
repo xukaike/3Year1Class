@@ -1,7 +1,7 @@
 <!--pages/searchlist/searchlist.wxml-->
 <view class="cu-bar search bg-white">
     <view class='search-form round'>
-      <text class="icon-search"></text>
+      <text class="cuIcon-search"></text>
       <input type="text" placeholder="{{searchvalue}}" confirm-type="search" bindinput='bindinput' bindconfirm='search'></input>
     </view>
     <view class='action'>

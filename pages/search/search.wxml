@@ -1,11 +1,11 @@
 <!--pages/search/search.wxml-->
 <view class="cu-bar search bg-white">
     <view class='search-form round'>
-      <text class="icon-search"></text>
+      <text class="cuIcon-search"></text>
       <input type="text" placeholder="搜索文章" confirm-type="搜索" focus="true" bindinput='bindinput' bindconfirm='search'></input>
     </view>
     <view class='action'>
-      <button class='cu-btn bg-red shadow-blur round' bindtap='back'>取消</button>
+      <button class='cu-btn bg-cyan shadow-blur round' bindtap='back'>取消</button>
     </view>
 </view>
 <view class="cotianer1 padding flex flex-wrap justify-between align-center ">

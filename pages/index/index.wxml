@@ -2,20 +2,22 @@
 
   <view class="cu-bar search bg-white">
     <view class='search-form round'>
-      <text class="icon-search"></text>
+      <text class="cuIcon-search"></text>
       <input disabled="{{true}}" bindtap='search' type="text" placeholder="搜索文章" confirm-type="search"></input>
     </view>
   </view>
 
 
 <!-- 轮播图 -->
-<swiper class="card-swiper square-dot bg-white"  indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper"  indicator-color="#8799a3" indicator-active-color="#0081ff">
-  <swiper-item wx:for="{{4}}" wx:key class="{{cardCur==index?'cur':''}}">
-    <view class='bg-img shadow-blur' style="background-image:url(https://image.weilanwl.com/img/4x3-{{index+1}}.jpg)"></view>
+
+<swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </view>
   </swiper-item>
 </swiper>
-
-
 
   <view class="cu-bar bg-white">
     <view class='action sub-title'>
