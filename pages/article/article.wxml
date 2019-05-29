@@ -3,11 +3,11 @@
 <view class="view-title">{{item.title}}</view>
 <view class="cu-bar bg-white solid-bottom margin-top ">
   <view class='action'>
-    <text class="view-date">{{time}}</text>
-    <text class="view-time">{{item.account}}</text>
+    <text class="view-date text-cut">{{time}}</text>
+    <text class="view-time text-cut">{{item.account}}</text>
   </view>
-  <button class=" cu-btn bg-cyan  round  margin-right-sm {{ isCollect?'light':'' }}" bindtap='star'>
-    <text class='icon-favor'></text>{{text}}
+  <button class=" cu-btn bg-cyan  round  margin-right-sm {{ isCollect?'light':'' }} text-cut" bindtap='star'>
+    <text class='icon-favor '></text>{{text}}
   </button>
 </view>
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
