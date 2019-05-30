@@ -29,4 +29,4 @@
   </view>
 </view>
 
-<view wx:if="{{isLoading}}" class="cu-load bg-cyan {{!isNone?'loading':'over'}}"></view>
+<view wx:if="{{isLoading}}" class="cu-load bg-grey {{!isNone?'loading':'over'}}"></view>

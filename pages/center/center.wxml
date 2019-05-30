@@ -22,13 +22,7 @@
 
 <view class="bg-white">
 
-  <view class="cu-bar bg-white">
-    <view class='action sub-title'>
-      <text class='text-xl text-bold text-BLACK'>标签</text>
-      <text class='text-ABC text-BLACK'>SIGN</text>
-      <!-- last-child选择器-->
-    </view>
-  </view>
+  
 
 
 <view class="cotianer1 padding flex flex-wrap justify-between align-center ">
