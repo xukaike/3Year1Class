@@ -1,8 +1,34 @@
-<view class="cu-timeline" wx:for="{{finallList}}" wx:for-index="key"  wx:for-item="value">
-  <view class="cu-time">{{key}}</view>
-  <view class="cu-item text-cyan " wx:for="{{value}}">
-    <view class="bg-grey content text-cut" bindtap="toarticle" data-obj="{{item}}">
-      <text>{{item.time}}</text> {{item.title}}
+<view wx:for="{{finallList}}" wx:for-index="key"  wx:for-item="value">
+  <view class="cu-bar  bg-white">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-black">{{key}}</text>
+      <text class="bg-grey" style="width:2rem"></text>
+    </view>
+  </view>
+  <view class="cu-card dynamic no-card" wx:for="{{value}}" bindtap='toarticle' data-obj="{{item}}">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar comment solids-top">
+        <view class="cu-item">
+          <view class="cu-avatar round" style="background-image:url(https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png"></view>
+          <view class="content">
+            <view class="text-black text-content text-sm">
+              {{item.title}}
+            </view>
+            <view class="bg-cyan light padding-sm radius margin-top-sm  text-sm">
+              <view class="flex">
+                <view class="flex-sub text-grey">{{item.intro}}</view>
+              </view>
+            </view>
+            <view class="margin-top-sm flex justify-between">
+              <view class="text-black text-df">{{item.time}}</view>
+              <view>
+                <text class="cuIcon-appreciate text-black"></text>
+                <text class="cuIcon-messagefill text-black margin-left-sm"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
