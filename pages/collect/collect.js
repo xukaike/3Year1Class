@@ -127,5 +127,12 @@ Page({
         }
       }
     });
+  },
+  toarticle(e){
+    let item = escape(JSON.stringify(e.currentTarget.dataset.obj))
+    console.log(item)
+    wx.navigateTo({
+      url:'../article/article?item='+item
+    })
   }
 });
