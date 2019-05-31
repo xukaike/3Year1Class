@@ -6,32 +6,26 @@ Page({
     CustomBar: app.globalData.CustomBar,
     loadProgress: 0,
     checks: [
-      { name: "奶茶", value: '0', checked: false },
-      { name: "喝再多", value: '1', checked: false },
-      { name: "都不会胖的", value: '2', checked: false },
-      { name: "减肥没用的", value: '3', checked: false },
-      { name: "瘦不下来的", value: '4', checked: false },
-      { name: "柠檬精", value: '5', checked: false },
-      { name: "奶黄包", value: '6', checked: false },
-      { name: "咸鸭蛋", value: '7', checked: false },
-      { name: "华晨宇", value: '8', checked: false },
-      { name: "歌手", value: '9', checked: false },
-      { name: "林宥嘉", value: '10', checked: false },
-      { name: "爬虫", value: '11', checked: false },
-      { name: "python", value: '12', checked: false },
-      { name: "大数据", value: '13', checked: false },
-      { name: "笑", value: '14', checked: false },
-      { name: "人工智能", value: '15', checked: false },
-      { name: "哔哩哔哩", value: '16', checked: false },
-      { name: "Java", value: '17', checked: false },
-      { name: "RNG", value: '18', checked: false },
-      { name: "dota", value: '19', checked: false },
-      { name: "lol", value: '24', checked: false },
-      { name: "游戏", value: '20', checked: false },
-      { name: "前端", value: '25', checked: false },
-      { name: "富婆", value: '21', checked: false },
-      { name: "少奋斗20年", value: '22', checked: false },
-      { name: "白日梦", value: '23', checked: false },
+      { name: "搞笑", value: '0', checked: false },
+      { name: "养生堂", value: '1', checked: false },
+      { name: "私房话", value: '2', checked: false },
+      { name: "八卦精", value: '3', checked: false },
+      { name: "科技咖", value: '4', checked: false },
+      { name: "财经迷", value: '5', checked: false },
+      { name: "生活家", value: '7', checked: false },
+      { name: "汽车控", value: '7', checked: false },
+      { name: "时尚圈", value: '8', checked: false },
+      { name: "育儿", value: '9', checked: false },
+      { name: "旅游", value: '10', checked: false },
+      { name: "职场", value: '11', checked: false },
+      { name: "美食", value: '12', checked: false },
+      { name: "历史", value: '13', checked: false },
+      { name: "教育", value: '14', checked: false },
+      { name: "星座", value: '15', checked: false },
+      { name: "体育", value: '16', checked: false },
+      { name: "游戏", value: '17', checked: false },
+      { name: "萌宠", value: '18', checked: false },
+      { name: "军事", value: '19', checked: false }
       
     ],
   },
@@ -51,14 +45,62 @@ Page({
   },
 
   //弹窗的显示和隐藏
-  showModal(e) {
-    this.setData({
-      modalName: e.currentTarget.dataset.target
+  add() {
+    let list= [];
+    var that = this;
+    for(var i=0;i<this.data.checks.length;i++){
+      if(this.data.checks[i].checked == true){
+        list.push(this.data.checks[i].name)
+      }
+    }
+    console.log(list);
+    wx.request({
+      url:'https://sv.icewhite.cn:9301/modify_tag',
+          method:'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' 
+          },
+          data:{
+            userid:app.globalData.openId,
+            tag:JSON.stringify({'list':list})
+          },
+          success:res=>{
+            if(res.statusCode == 400){
+              wx.showToast({
+                title:'添加失败！',
+                icon:'none'
+              })
+            }
+            else{
+              for(var i=0;i<list.length;i++){
+                for(var j=0;j<that.data.checks.length;j++){
+                  if(list[i]==that.data.checks[j].name){
+                    that.data.checks[j].checked = true
+                  }
+                }
+              }
+              that.setData({
+                checks:that.data.checks
+              });
+              wx.showToast({
+                title:'添加成功'
+              })
+            }
+          }
     })
   },
-  hideModal(e) {
+  onLoad(){
+    for(var i=0;i<app.globalData.tags.length;i++){
+      for(var j=0;j<this.data.checks.length;j++){
+        if(app.globalData.tags[i] == this.data.checks[j].name){
+          console.log(this.data.checks[j].name)
+          this.data.checks[j].checked =true;
+        }
+      }
+    }
     this.setData({
-      modalName: null
+      checks:this.data.checks
     })
-  },
+    console.log(this.data.checks)
+  }
 });

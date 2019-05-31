@@ -1,37 +1,5 @@
 
 
-<view class="cu-bar bg-cyan search padding-sm">
-    <view class='search-form radius '>
-      <text class="icon-search"></text>
-      <input type="text" placeholder="搜索标签" confirm-type="search"></input>
-    </view>
-    <view class='action' bindtap="showModal" data-target="DialogModal">
-      <text class='icon-roundadd'></text>
-      <text>添加</text>
-    </view>
-  </view>
-
-
-<view class="cu-modal {{modalName=='DialogModal'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class='action' bindtap='hideModal'>
-        <text class='icon-close text-red'></text>
-      </view>
-    </view>
-    <view class='padding-lg'>
-      <input placeholder='请输入新标签' bindinput='setValue' data-name='stuEidtName' style='font-size: 40rpx;'></input>
-    </view>
-    
-    <view class="cu-bar bg-white justify-end">
-      <view class='action'>
-        <button class='cu-btn line-green text-green' bindtap='hideModal'>取消</button>
-        <button class='cu-btn bg-green margin-left' bindtap='hideModal'>确定</button>
-      </view>
-    </view>
-  </view>
-</view>
-
 
 
 <view class="bg-white">
@@ -43,6 +11,6 @@
   <input style='display:none' maxlength="20" name="roomlabel" value=" {{checks[name]}}" />
 </view>  
 
-
-<view class="cu-load grey over"></view>
-
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-blue lg" bindtap="add">保存</button>
+</view>
