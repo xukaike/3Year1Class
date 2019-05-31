@@ -16,6 +16,7 @@ Page({
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
     console.log(this.data.tag[that.data.TabCur])
+    
     wx.request({
       url:'https://sv.icewhite.cn:9301/tag_pages',
       method:'POST',
@@ -46,6 +47,13 @@ Page({
         userid:app.globalData.openId
       },
       success:res=>{
+        if(res.data.user_tags.length == 0){
+          that.setData({
+            modalName: 'DialogModal2'
+          })
+        }
+        else{
+          
         that.setData({
           tag:res.data.user_tags
         })
@@ -77,6 +85,7 @@ Page({
             }
           }
         })
+        }
       }
     })
   },
@@ -85,6 +94,19 @@ Page({
     console.log(item)
     wx.navigateTo({
       url:'../article/article?item='+item
+    })
+  },
+  
+  onShow(){
+    this.onLoad();
+    console.log('show')
+  },
+  tosettag(){
+    this.setData({
+      modalName: ''
+    })
+    wx.navigateTo({
+      url:'../tag/tag'
     })
   }
 })

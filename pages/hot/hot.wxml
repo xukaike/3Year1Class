@@ -27,3 +27,18 @@
     </view>
   </view>
 </view>
+
+<view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content"></view>
+    </view>
+    <view class="padding-xl">
+      请先设置标签٩(๑`^´๑)۶
+    </view>
+    <view class="cu-bar bg-white">
+      
+      <view class="action margin-0 flex-sub text-green solid-left" bindtap="tosettag">确定</view>
+    </view>
+  </view>
+</view>
