@@ -35,7 +35,6 @@
     </view>
     <view class="cu-list menu menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{userInfo.avatarUrl}});"></view>
         <view class='content flex-sub'>
           <view class='text-grey'>{{userInfo.nickName}}</view>
           <view class='text-gray text-sm flex justify-between'>
@@ -52,29 +51,3 @@
   </view>
 </view>
   
-
-  <view class="cu-bar bg-white">
-    <view class='action sub-title'>
-      <text class='text-xl text-bold text-black'>日荐</text>
-      <text class='bg-black'></text>
-      <!-- last-child选择器-->
-    </view>
-  </view>
-
-
-<view class="bg-white">
-  <view class='padding flex text-center text-black   bg-white shadow-warp' bindtap='tosubscription'>
-    <view class='flex flex-sub flex-direction  solid-right'>
-      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
-      <text class='text-xl text-bold margin-top-sm' >name</text>
-    </view>
-    <view class='flex flex-sub flex-direction solid-right' bindtap='tosubscription'>
-      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
-      <text class='text-xl text-bold margin-top-sm' >name</text>
-    </view>
-    <view class='flex flex-sub flex-direction solid-right' bindtap='tosubscription'>
-      <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});"></view>
-      <text class='text-xl text-bold margin-top-sm' >name</text>
-    </view>
-  </view>
-</view>
