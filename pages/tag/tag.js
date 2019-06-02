@@ -83,6 +83,7 @@ Page({
                 title:'添加成功',
                 duration:500
               })
+              app.globalData.tags = list
             }
           }
     });
@@ -90,41 +91,13 @@ Page({
       wx.navigateBack({
         delta: 1
       })
-    },500)
+    },500);
+
   },
   onLoad(){
-    var that = this;
-    wx.request({
-      url:'https://sv.icewhite.cn:9301/user_tags',
-      method:'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data:{
-        userid:app.globalData.openId
-      },
-      success:res=>{
-        if(res.statusCode == 400){
-          wx.showToast({
-            title:'获取标签失败！',
-            icon:'none'
-          })
-        }
-        else{
-          that.setData({
-            tags:res.data.user_tags
-          })
-        }
-      }
-    })
-  },
-  onReady(){
-    this.setChecks();
-  },
-  setChecks(){
-    for(var i=0;i<this.data.tags.length;i++){
+    for(var i=0;i<app.globalData.tags.length;i++){
       for(var j=0;j<this.data.checks.length;j++){
-        if(this.data.tags[i] == this.data.checks[j].name){
+        if(app.globalData.tags[i] == this.data.checks[j].name){
           console.log(this.data.checks[j].name)
           this.data.checks[j].checked =true;
         }
