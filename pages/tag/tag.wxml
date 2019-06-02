@@ -12,5 +12,5 @@
 </view>  
 
 <view class="padding flex flex-direction">
-  <button class="cu-btn bg-blue lg" bindtap="add">保存</button>
+  <button class="cu-btn round bg-cyan lg shadow" bindtap="add">保存</button>
 </view>
