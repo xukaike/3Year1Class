@@ -1,34 +1,51 @@
-<view wx:for="{{finallList}}" wx:for-index="key"  wx:for-item="value">
+<view wx:for="{{finallList}}" wx:for-index="key"  wx:for-item="value" wx:key>
   <view class="cu-bar  bg-white">
     <view class="action sub-title">
       <text class="text-xl text-bold text-black">{{key}}</text>
       <text class="bg-grey" style="width:2rem"></text>
     </view>
   </view>
-  <view class="cu-card dynamic no-card" wx:for="{{value}}" bindtap='toarticle' data-obj="{{item}}">
+  <view class="cu-card dynamic no-card" wx:for="{{value}}" wx:key >
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar comment solids-top">
         <view class="cu-item">
           <view class="cu-avatar round" style="background-image:url(https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png"></view>
           <view class="content">
-            <view class="text-black text-content text-sm">
+            <view class="text-black text-content text-sm" bindtap='toarticle' data-obj="{{item}}">
               {{item.title}}
             </view>
-            <view class="bg-cyan light padding-sm radius margin-top-sm  text-sm">
+            <view class="bg-cyan light padding-sm radius margin-top-sm  text-sm" bindtap='toarticle' data-obj="{{item}}">
               <view class="flex">
                 <view class="flex-sub text-grey">{{item.intro}}</view>
               </view>
             </view>
             <view class="margin-top-sm flex justify-between">
               <view class="text-black text-df">{{item.time}}</view>
-              <view>
-                <text class="cuIcon-appreciate text-black"></text>
-                <text class="cuIcon-messagefill text-black margin-left-sm"></text>
+              <view bindtap="showModal" data-id="{{item.id}}">
+                <text class="cuIcon-deletefill text-red margin-left-sm"></text>
               </view>
             </view>
           </view>
         </view>
       </view>
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal {{showModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">(｡•́︿•̀｡) </view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding bg-white">
+      确定要删除吗？
+    </view>
+    <view class="cu-bar bg-white">      
+      <view class="action margin-0 flex-sub text-red solid-left" bindtap="delete">删除</view>
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">取消</view>
     </view>
   </view>
 </view>
