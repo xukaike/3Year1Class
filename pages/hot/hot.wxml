@@ -33,7 +33,7 @@
     <view class="cu-bar bg-white justify-end">
       <view class="content"></view>
     </view>
-    <view class="padding-xl">
+    <view class="padding-xl bg-white">
       请先设置标签٩(๑`^´๑)۶
     </view>
     <view class="cu-bar bg-white">
