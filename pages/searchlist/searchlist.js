@@ -77,9 +77,7 @@ Page({
     })
   },
   toarticle(e){
-    
-    var obj = e.currentTarget.dataset.obj;
-    let item = escape(JSON.stringify(obj));
+    let item = escape(JSON.stringify(e.currentTarget.dataset.obj));
     console.log(item)
     wx.navigateTo({
       url:'../article/article?item='+item
