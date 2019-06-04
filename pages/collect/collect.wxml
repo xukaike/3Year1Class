@@ -13,3 +13,4 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{isLoading}}" class="cu-load bg-white {{!isNone?'loading':'over'}}"></view>

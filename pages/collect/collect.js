@@ -4,6 +4,9 @@ var utils = require('../../utils/util.js');
 Page({
   data: {
     list:[],
+    fragment:0,
+    isLoading:false,
+    isNone:false,
     fragment:0
   },
   onLoad: function () {
@@ -134,5 +137,42 @@ Page({
     wx.navigateTo({
       url:'../article/article?item='+item
     })
-  }
+  },
+  onReachBottom(){
+    var that = this;
+    this.data.fragment++;
+    this.setData({
+      isLoading:true
+    })
+    wx.request({
+      url: 'https://sv.icewhite.cn:9301/page_key_search',
+      data: {
+        key: that.data.searchvalue,
+        fragment: that.data.fragment
+      },
+      method:"POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
+      success(res){
+        if(res.statusCode == 400){
+          that.setData({
+            isNone:true
+          })
+          console.log(that.data.isLoading)
+        }
+        else{
+          let list = that.data.searchresult;
+          for(var i=0;i<res.data.result.length;i++){
+            list.push(res.data.result[i])
+          }
+          that.setData({
+            searchresult:list,
+            isLoading:false
+          })
+          console.log(that.data.searchresult)
+        }
+      }
+    })
+  },
 });
