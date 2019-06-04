@@ -5,16 +5,12 @@
       <input type="text" placeholder="搜索文章" confirm-type="搜索" focus="true" bindinput='bindinput' bindconfirm='search'></input>
     </view>
     <view class='action'>
-      <button class='cu-btn bg-cyan shadow-blur round' bindtap='back'>取消</button>
+      <button class='cu-btn bg-cyan shadow round' bindtap='search'>搜索</button>
     </view>
 </view>
 <view class="cotianer1 padding flex flex-wrap justify-between align-center ">
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
-</view>
-<view class="cotianer2 padding flex flex-wrap justify-between align-center ">
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
-  <button class='cu-btn round shadow linebordersize-black' bindtap='buttoncheck'>推荐1</button>
+  <button class='cu-btn round  bg-white' bindtap='buttoncheck' wx:for="{{list1}}" wx:key data-result="{{item}}">{{item}}</button>
+</view> 
+<view class="cotianer2 padding flex flex-wrap justify-between align-center "> 
+  <button class='cu-btn round  bg-white' bindtap='buttoncheck' wx:for="{{list2}}" wx:key data-result="{{item}}">{{item}}</button>
 </view>

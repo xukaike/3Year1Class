@@ -1,12 +1,16 @@
 // pages/search/search.js
 Page({
   data: {
-    searchitem:''
-  },
-  back:function(){
-    wx.navigateBack({
-      delta: 1
-    })
+    searchitem:'',
+    list1:['波音',
+          '海南',
+          '新闻联播'
+        ],
+    list2:[
+      '郎朗',
+      '巴菲特午餐',
+      '杨幂'
+    ]
   },
   bindinput:function(e){
     this.setData({
@@ -18,9 +22,13 @@ Page({
       url: '../searchlist/searchlist?searchvalue='+this.data.searchitem
     })
   },
-  buttoncheck:function(){
+  buttoncheck:function(e){
+    let result = e.currentTarget.dataset.result
+    this.setData({
+      searchitem:result
+    })
     wx.redirectTo({
-      url: '../searchlist/searchlist?searchvalue=推荐1'
+      url: '../searchlist/searchlist?searchvalue='+this.data.searchitem
     })
   }
 })
