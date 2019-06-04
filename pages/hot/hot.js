@@ -147,6 +147,43 @@ Page({
         }
       }
     })
+  },
+  touchStart(e) {
+    this.setData({
+      "touch.x": e.changedTouches[0].clientX,
+      "touch.y": e.changedTouches[0].clientY
+    });
+  },
+  touchEnd(e) {
+    var that = this;
+    let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
+    
+    if (endX - this.data.touch.x > 100 && Math.abs(endY - this.data.touch.y) < 100) {      //右滑
+       
+      if(this.data.TabCur!=0){
+        wx.showLoading({
+          title:'加载中'
+        })
+        this.setData({
+          TabCur:this.data.TabCur-1,
+          scrollLeft: (this.data.TabCur - 1) * 60
+        })
+        switchTabPost(that);
+      }
+    } else if (endX - this.data.touch.x < -100 && Math.abs(endY - this.data.touch.y) < 100) {   //左滑
+      
+      if(this.data.TabCur!=this.data.tag.length-1){
+        wx.showLoading({
+          title:'加载中'
+        })
+        this.setData({
+          TabCur:this.data.TabCur+1,
+          scrollLeft: (this.data.TabCur - 1) * 60
+        })
+        switchTabPost(that);
+      }
+    }
   }
 })
 
