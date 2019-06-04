@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     userInfo: {},
@@ -26,8 +25,10 @@ Page({
         name:'历史',
         link:'history'
       }
-    ]
-    
+    ],
+    size:['xs','sm','dm','lg','xl',' '],
+    color:['red','orange','yellow','olive','green','cyan','blue','purple','mauve','pink','brown','grey','black','white','gray'],
+    bt_size:['sm',' ','lg']
   },
   //事件处理函数
   onLoad: function () {
@@ -58,6 +59,23 @@ Page({
       })
     }
   },
+  onShow(){
+    wx.request({
+      url: 'https://sv.icewhite.cn:9301/user_tags',
+      method:"POST",
+      data:{
+        userid:app.globalData.openId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
+      success:res=>{
+        this.setData({
+          tags:res.data.user_tags
+        })
+      }
+    })
+  },
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -80,5 +98,13 @@ Page({
     wx.navigateTo({
       url:'../collect/collect'
     })
+  },
+  getRandomNum() {
+    var min = 1//这里改成你需要的最小值
+    var max = 100//这里改成你需要的最大值
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  },
+  test(){
+    return 123
   }
 })

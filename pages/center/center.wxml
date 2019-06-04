@@ -1,3 +1,4 @@
+<wxs module="random" src="../../utils/center.wxs"></wxs>
 <view class="margin-xl padding-xl bg-white radius shadow-lg">
   <view class="flex justify-center">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
@@ -19,30 +20,10 @@
   </view>
 
 
-
 <view class="bg-white">
-
-  
-
-
-<view class="cotianer1 padding flex flex-wrap justify-between align-center ">
-  <button class='cu-btn round shadow bg-blue animation-scale-up ' style='animation-delay: 0.6s;'>标签1</button>
-  <view class="padding-top:50%">
-  <button class='cu-btn round shadow lg bg-pink animation-scale-up '  style='animation-delay: 1s;'>标签1</button>
+  <view class="bg-white padding">
+    <view class="grid col-2 margin-bottom text-center justify-center " >
+      <button wx:for="{{tags}}" wx:key class='cu-btn margin-lr-{{size[random.getRandomNum(0,5)]}} {{bt_size[random.getRandomNum(0,2)]}} padding-{{size[random.getRandomNum(0,5)]}} padding-lr-{{size[random.getRandomNum(0,5)]}} padding-tb-{{size[random.getRandomNum(0,5)]}} margin-{{size[random.getRandomNum(0,5)]}} margin-tb-{{size[random.getRandomNum(0,5)]}} round shadow bg-{{color[random.getRandomNum(0,14)]}} animation-scale-up'data-class='scale-up' style='animation-delay: {{random.getRandom()}}s;'>{{item}}</button>
+    </view>
   </view>
-</view>
-<view class="cotianer2 padding flex flex-wrap justify-between align-center ">
-  <button class='cu-btn round shadow bg-black animation-scale-up'data-class='scale-up' style='animation-delay: 1s;'>标签1</button>
-  <view class="padding-top:75%">
-  <button class='cu-btn round shadow sm bg-green animation-scale-up'data-class='scale-up' style='animation-delay: 0.5s;'>标签1</button>
-  </view>
-  <button class='cu-btn round shadow lg bg-brown animation-scale-up'data-class='scale-up' style='animation-delay: 0.7s;'>标签1</button>
-</view>
-<view class="cotianer3 padding flex flex-wrap justify-between align-center ">
-  <button class='cu-btn round shadow lg bg-yellow animation-scale-up' data-class='scale-up' style='animation-delay: 0.9s;'>标签1</button>
-  <button class='cu-btn round shadow sm bg-red animation-scale-up' data-class='scale-up' style='animation-delay: 0.8s;'>标签1</button>
-  <view class="padding-bottom:50%">
-  <button class='cu-btn round shadow bg-purple animation-scale-up'data-class='scale-up' style='animation-delay: 0.5s;'>标签1</button>
-  </view>
-</view>
 </view>
