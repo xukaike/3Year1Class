@@ -1275,7 +1275,15 @@ button.icon.lg {
 	justify-content: flex-end;
 	align-items: center
 }
-
+.cu-list.menu-avatar>.cu-item2 {
+	position: relative;
+	display: flex;
+	padding-right: 10rpx;
+	height: 70rpx;
+	background-color: var(--white);
+	justify-content: flex-end;
+	align-items: center
+}
 .cu-list.menu-avatar>.cu-item>.cu-avatar {
 	position: absolute;
 	left: 30rpx
@@ -1289,6 +1297,12 @@ button.icon.lg {
 	position: absolute;
 	left: 146rpx;
 	width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
+	line-height: 1.6em;
+}
+.cu-list.menu-avatar>.cu-item2 .content2 {
+	position: absolute;
+	left: 50rpx;
+	width: 100%;
 	line-height: 1.6em;
 }
 

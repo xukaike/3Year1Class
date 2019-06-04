@@ -1,44 +1,18 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var utils = require('../../utils/util.js');
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     cardCur: 0,
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }, {
-      id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
-    }],
+    isLoading:false,
+    isNone:false,
+    hot_page:[]
   },
-  onLoad: function () {
+  onLoad(){
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -64,7 +38,34 @@ Page({
           })
         }
       })
-    }
+    };
+    wx.request({
+      url: 'https://sv.icewhite.cn:9301/index_page',
+      method:"GET",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
+      success:res=>{
+        this.setData({
+          index_page:res.data.result
+        })
+      }
+    })
+    wx.request({
+      url: 'https://sv.icewhite.cn:9301/hot_page',
+      method:"GET",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
+      success:res=>{
+        for(var i=0;i<res.data.result.length;i++){
+          res.data.result[i].time=utils.formatTime(res.data.result[i].timestramp, 'Y-M-D');
+        }
+        this.setData({
+          hot_page:res.data.result
+        })
+      }
+    })
   },
   // cardSwiper
   cardSwiper(e) {
@@ -72,7 +73,7 @@ Page({
       cardCur: e.detail.current
     })
   },
-  getUserInfo: function(e) {
+  getUserInfo(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -80,24 +81,49 @@ Page({
       hasUserInfo: true
     })
   },
-  search:function(){
+  search(){
     wx.navigateTo({
       url:'../search/search'
     })
   },
-  bindkeyinput:function(e){
+  bindkeyinput(e){
     this.setData({
       value:e.detail.value
     })
   },
-  toarticle:function(){
+  toarticle(e){
+    let item = escape(JSON.stringify(e.currentTarget.dataset.obj));
+    console.log(item)
     wx.navigateTo({
-      url:'../article/article'
+      url:'../article/article?item='+item
     })
   },
-  tosubscription:function(){
-    wx.navigateTo({
-      url:'../subscription/subscription'
-    })
+  onReachBottom(){
+    if(this.data.isNone == false){
+      this.setData({
+        isLoading:true
+      });
+      wx.request({
+        url: 'https://sv.icewhite.cn:9301/tag_pages',
+        method:"POST",
+        data:{
+          userid:app.globalData.openId,
+          tag:'热门'
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' 
+        },
+        success:res=>{
+          for(var i=3;i<res.data.result.length;i++){
+            res.data.result[i].time=utils.formatTime(res.data.result[i].timestramp, 'Y-M-D');
+            this.data.hot_page.push(res.data.result[i])
+          }
+          this.setData({
+            hot_page:this.data.hot_page, 
+            isNone:true
+          })
+        }
+      })
+    }
   }
 })

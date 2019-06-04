@@ -11,39 +11,33 @@
 <!-- 轮播图 -->
 
 <swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
-  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+  <swiper-item wx:for="{{index_page}}" wx:key class="{{cardCur==index?'cur':''}}" bindtap='toarticle' data-obj="{{item}}">
     <view class="swiper-item">
-      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+      <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill" ></image>
     </view>
   </swiper-item>
 </swiper>
 
-  <view class="cu-bar bg-white">
-    <view class='action sub-title'>
-      <text class='text-xl text-bold text-black'>热门推荐</text>
-      <text class='bg-black'></text>
-      <!-- last-child选择器-->
-    </view>
+<view class="cu-bar bg-white">
+  <view class='action sub-title'>
+    <text class='text-xl text-bold text-black'>热门推荐</text>
+    <text class='bg-black'></text>
+    <!-- last-child选择器-->
   </view>
-<view class="cu-card case no-card" bindtap='toarticle'>
-  <view wx:for="{{1}}" wx:key class="cu-item shadow">
+</view>
+
+<view class="cu-card case no-card" >
+  <view wx:for="{{hot_page}}" wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
     <view class='image'>
-      <image src="/images/swiper1.jpg" mode="widthFix"></image>
-      <view class="cu-tag bg-blue">福利</view>
-      <view class='cu-bar bg-shadeBottom'>我和制服不得不说的那些事！</view>
+      <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="widthFix" ></image>
+      <view class='cu-bar bg-shadeBottom'>{{item.title}}</view>
     </view>
     <view class="cu-list menu menu-avatar">
-      <view class="cu-item">
-        <view class='content flex-sub'>
-          <view class='text-grey'>{{userInfo.nickName}}</view>
-          <view class='text-gray text-sm flex justify-between'>
-            十天前
-            <view class="text-gray text-sm">
-              <text class="icon-attentionfill"></text> 10
-              <text class="icon-appreciatefill"></text> 20
-              <text class="icon-messagefill"></text> 30
-            </view>
+      <view class="cu-item2">
+        <view class='content2 flex '>
+          <view class='text-grey text-cut flex-twice'>{{item.account}}</view>
+          <view class='text-gray text-sm flex-sub justify-between'>
+            {{item.time}}
           </view>
         </view>
       </view>
@@ -51,3 +45,4 @@
   </view>
 </view>
   
+<view wx:if="{{isLoading}}" class="cu-load bg-white {{!isNone?'loading':'over'}}"></view>
