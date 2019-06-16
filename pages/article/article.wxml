@@ -3,11 +3,39 @@
 <view class="view-title">{{item.title}}</view>
 <view class="cu-bar bg-white solid-bottom margin-top ">
   <view class='action'>
-    <text class="view-date text-cut">{{time}}</text>
+    <text class="view-date ">{{time}}</text>
     <text class="view-time text-cut">{{item.account}}</text>
   </view>
   <button class=" cu-btn bg-cyan  round  margin-right-sm {{ isCollect?'light':'' }} text-cut" bindtap='star'>
     <text class='icon-favor '></text>{{text}}
   </button>
 </view>
-<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+<template is="wxParse"  data="{{wxParseData:article.nodes}}"/>
+
+<view class="cu-bar bg-white" wx:if="{{isSimilar}}">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-black">推荐文章</text>
+    <text class="text-Abc text-black">recommend</text>
+    <!-- last-child选择器-->
+  </view>
+</view>
+
+<view class="cu-card article no-card " wx:for="{{similar}}">
+  <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
+    <view class="title">
+      <view class="text-cut">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="content">
+      <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill"></image>
+      <view class="desc">
+        <view class='text-content'> {{item.intro}}</view>
+        <view>
+          <view class='cu-tag bg-red light sm round'>{{item.account}}</view>
+          <view class='cu-tag bg-green light sm round'>{{item.type}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -39,12 +39,10 @@ Page({
     that.setData({
       item: JSON.parse(unescape(options.item))
     });
-    let timestramp = utils.formatTime(that.data.item.timestramp, 'Y-M-D h:m:s');
+    let timestramp = utils.formatTime(that.data.item.timestramp, 'M-D h:m');
     that.setData({
       time: timestramp
     })
-    console.log(that.data.item);
-    console.log(utils.formatTime(that.data.item.timestramp, 'Y-M-D h:m:s'));
     wx.request({
       url: 'https://sv.icewhite.cn:9301/page_content',
       data: { id: that.data.item.id },
@@ -52,10 +50,11 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success(res) {
+      success:res=> {
         that.setData({
           article: res.data.content
         });
+        console.log(that.data.item.id)
         WxParse.wxParse('article', 'html', that.data.article, that, 0);
         wx.hideLoading();
         wx.request({
@@ -77,10 +76,37 @@ Page({
         text:'已收藏'
       })
     }
-    
+    wx.request({
+      url: 'https://sv.icewhite.cn:9301/similar_page',
+      data: { pageid: that.data.item.id },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:res=>{
+        if(res.data.result.length == 0){
+          that.setData({
+            isSimilar:false
+          })
+        }
+        else{
+          that.setData({
+            isSimilar:true,
+            similar:res.data.result
+          })
+        }
+      }
+    })
 
 
     // 更改数据、获取新数据完成
+  },
+  toarticle(e){
+    let item = escape(JSON.stringify(e.currentTarget.dataset.obj));
+    console.log(item)
+    wx.navigateTo({
+      url:'../article/article?item='+item
+    })
   },
   star(){
     console.log(this.data.isCollect)

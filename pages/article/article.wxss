@@ -27,6 +27,7 @@ page{
 }
 .view-date{
   margin-right: 20rpx;
+  width: 300rpx
 }
 .wxParse-img{
   margin-top:20rpx;
