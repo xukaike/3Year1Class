@@ -1,1 +1,17 @@
-/* pages/hot/hot.wxss */
+page {
+    height: 100%;
+  }
+  
+  
+  
+  .swiper-box {
+    height: 93%;
+    width: 100%;
+  }
+  
+  .scl {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  

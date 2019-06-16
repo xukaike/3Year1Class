@@ -2,33 +2,43 @@
 
 <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
   <view class='flex text-center'>
-    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{tag}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      {{item}}
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{allpagelist}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      <view wx:for="{{item}}" >{{index}}</view>
     </view>
   </view>
 </scroll-view>
 
-<view bindtouchstart='touchStart' bindtouchend="touchEnd">
-  <view class="cu-card article no-card "  wx:for="{{pages}}" wx:key >
-    <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
-      <view class="title">
-        <view class="text-cut">
-          {{item.title}}
-        </view>
-      </view>
-      <view class="content">
-        <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill"></image>
-        <view class="desc">
-          <view class='text-content'> {{item.intro}}</view>
-          <view>
-            <view class='cu-tag bg-red light sm round'>{{item.account}}</view>
-            <view class='cu-tag bg-green light sm round'>{{item.type}}</view>
+
+<view  wx:if="{{isLoad}}"class="cu-load bg-white loading"></view>
+
+<swiper current="{{TabCur}}" class="swiper-box bg-white" duration="300" bindchange="bindChange">
+  <swiper-item wx:for="{{allpagelist}}">
+    <scroll-view class="scl" scroll-y >
+      <view wx:for="{{item}}" wx:for-item="pagelist">
+        <view wx:for="{{pagelist}}" wx:key class="cu-card article no-card ">
+          <view  wx:key class="cu-item shadow" bindtap='toarticle' data-obj="{{item}}">
+            <view class="title">
+              <view class="text-cut">
+                {{item.title}}
+              </view>
+            </view>
+            <view class="content">
+              <image src="https://icewhite-1253595998.cos.ap-guangzhou.myqcloud.com/tzo_intro_img/{{item.id}}.png" mode="aspectFill"></image>
+              <view class="desc">
+                <view class='text-content'> {{item.intro}}</view>
+                <view>
+                  <view class='cu-tag bg-red light sm round'>{{item.account}}</view>
+                  <view class='cu-tag bg-green light sm round'>{{item.type}}</view>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-  </view>
-</view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+
 
 <view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
   <view class="cu-dialog">
