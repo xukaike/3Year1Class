@@ -26,6 +26,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' 
       },
       success(res){
+        if(res.data.result.length == 0){
+          that.setData({
+            isNone:true
+          })
+        }
         that.setData({
           searchresult:res.data.result
         });
